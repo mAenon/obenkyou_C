@@ -49,7 +49,7 @@ int is_prime(int n)
 ターミナル上で
 ```Bash
 $ make
-$ main
+$ ./main
 ```
 を実行することで2~100の素数一覧と個数が表示されます．
 
