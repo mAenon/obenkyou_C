@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void sort(int *);
+
 int main(void)
 {
     /*--------------------------------
@@ -14,16 +16,14 @@ int main(void)
     FILE *read_file, *write_file;
 
     read_file = fopen("./data.txt", "r");
-    write_file = fopen("./result.txt", "w");
 
     if (read_file == NULL)
     {
         fprintf(stderr, "cant open data.txt");
         exit(1);
     }
-    char chr, text[256];
-    int read_num = 0, minus_flag = 0;
-    double write_num = 0;
+    char chr;
+    int i = 0, read_num = 0, minus_flag = 0, write_num[40] = {0};
     while ((chr = fgetc(read_file)) != EOF)
     {
         for (; chr != ' ' && chr != '\n' && chr != EOF; chr = fgetc(read_file))
@@ -38,22 +38,41 @@ int main(void)
         }
         if (minus_flag)
             read_num *= -1;
-        write_num = read_num / 3;
-        write_num += 0.05;
 
-        if (chr != EOF)
-            sprintf(text, "%.1f%c", write_num, chr);
-        else
-            sprintf(text, "%.1f", write_num);
-        fputs(text, write_file);
+        write_num[i++] = read_num;
 
         read_num = 0;
         minus_flag = 0;
-        sprintf(text, "");
     }
 
     fclose(read_file);
-    fclose(write_file);
 
+    sort(write_num);
+
+    char text[256];
+    write_file = fopen("result.txt", "w");
+    for (i = 0; i < 40; i++)
+    {
+        if (i % 10 == 9)
+            chr = '\n';
+        else
+            chr = ' ';
+
+        sprintf(text, "%d%c", write_num[i], chr);
+        fputs(text, write_file);
+
+        sprintf(text, "");
+    }
     return 0;
+}
+
+void sort(int d[40])
+{
+    /*------------------------------
+    *
+    * 
+    * 
+    * ------------------------------*/
+    // TODO
+    return;
 }

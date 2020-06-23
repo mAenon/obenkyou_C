@@ -1,1 +1,5 @@
+*/*.o
+*/main
+
 file_operation/result.txt
+sort/result.txt
