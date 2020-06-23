@@ -3,6 +3,14 @@
 
 int main(void)
 {
+    /*--------------------------------
+    * read_file = read file's pointer
+    * write_file= write file's pointer
+    * chr       = read character
+    * read_num  = read number
+    * text      = would write text
+    * -------------------------------*/
+
     FILE *read_file, *write_file;
 
     read_file = fopen("./data.txt", "r");
@@ -38,4 +46,6 @@ int main(void)
 
     fclose(read_file);
     fclose(write_file);
+
+    return 0;
 }
