@@ -44,6 +44,7 @@ int is_prime(int n)
 # How to Use
 - main.c
 - Makefile
+
 をローカルに保存してください．  
 ターミナル上で
 ```Bash
